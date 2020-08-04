@@ -78,7 +78,7 @@ function draw() {
      
       score = score + Math.round(getFrameRate()/60);
      
-     if(keyDown("space")) {
+     if(keyDown("space") && trex.y >= 359) {
     trex.velocityY = -10;
        
   }
@@ -134,8 +134,11 @@ function reset(){
   obstaclesGroup.destroyEach();
   cloudsGroup.destroyEach();
   trex.changeAnimation("running",trex_running);
-  score = 0;
   
+  if(localStorage["highestScore"]<score){
+     localStorage["highestScore"]=score;
+     }
+  score = 0;
 }
 
 
